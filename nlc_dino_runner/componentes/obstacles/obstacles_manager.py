@@ -1,6 +1,6 @@
 from nlc_dino_runner.componentes.obstacles.cactus import Cactus
-from nlc_dino_runner.utils.constants import SMALL_CACTUS
-
+from nlc_dino_runner.utils.constants import SMALL_CACTUS, LARGE_CACTUS
+import random
 
 class ObstaclesManager:
 
@@ -8,8 +8,12 @@ class ObstaclesManager:
         self.obstacles_list = []
 
     def update(self, game):
+        size_cactus = random.randint(1, 2)
         if len(self.obstacles_list) == 0:
-            self.obstacles_list.append(Cactus(SMALL_CACTUS))
+            if size_cactus == 1:
+                self.obstacles_list.append(Cactus(SMALL_CACTUS))
+            elif size_cactus == 2:
+                self.obstacles_list.append(Cactus(LARGE_CACTUS))
 
         for obstacle in self.obstacles_list:
             obstacle.update(game.game_speed, self.obstacles_list)
