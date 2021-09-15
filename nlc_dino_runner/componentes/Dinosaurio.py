@@ -1,4 +1,5 @@
 import pygame
+
 from pygame.sprite import Sprite
 from nlc_dino_runner.utils.constants import RUNNING, DUCKING, JUMPING
 
@@ -10,8 +11,8 @@ class Dinosaur(Sprite):
     JUMP_VEL = 8
 
     def __init__(self):
-        self.image =RUNNING[0]
-        self.dino_rect =self.image.get_rect()
+        self.image = RUNNING[0]
+        self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_pos
         self.dino_rect.y = self.Y_pos
         self.step_index = 0
@@ -71,8 +72,5 @@ class Dinosaur(Sprite):
             self.dino_jump = False
             self.jump_vel = self.JUMP_VEL
 
-
-
     def draw(self, screen):
-        screen.blit(self.image,(self.dino_rect.x, self.dino_rect.y))
-
+        screen.blit(self.image, (self.dino_rect.x, self.dino_rect.y))

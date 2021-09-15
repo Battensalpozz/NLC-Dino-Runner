@@ -1,6 +1,6 @@
 import pygame
 
-
+from nlc_dino_runner.componentes.obstacles.obstacles_manager import ObstaclesManager
 from nlc_dino_runner.utils.constants import Title, ICON, SCREEN_WIDTH, SCREEN_HEIGHT, BG, FPS
 from nlc_dino_runner.componentes.Dinosaurio import Dinosaur
 
@@ -19,6 +19,7 @@ class Game:
         self.game_speed = 20
         self.clock = pygame.time.Clock()
         self.player = Dinosaur()
+        self.obstacle_manager = ObstaclesManager()
 
 
     def run (self):
@@ -38,9 +39,9 @@ class Game:
 
 
     def update(self):
-        user_input= pygame.key.get_pressed()
+        user_input = pygame.key.get_pressed()
         self.player.update(user_input)
-
+        self.obstacle_manager.update(self)
 
 
     def draw(self):
@@ -48,6 +49,7 @@ class Game:
         self.screen.fill((255,255,255))
         self.draw_bakground()
         self.player.draw(self.screen)
+        self.obstacle_manager.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 
