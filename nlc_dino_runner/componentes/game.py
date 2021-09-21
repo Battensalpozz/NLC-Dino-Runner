@@ -74,6 +74,8 @@ class Game:
         score_element, score_element_rect = text_utils.get_score_element(self.points)
         self.screen.blit(score_element, score_element_rect)
 
+        self.player.check_invincibility(self.screen)
+
 
 
     def draw_bakground(self):
