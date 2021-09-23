@@ -18,10 +18,14 @@ class ObstaclesManager:
 
         for obstacle in self.obstacles_list:
             obstacle.update(game.game_speed, self.obstacles_list)
+            if game.power_up_manager.hammer.rect.colliderect(obstacle.rect):
+                self.obstacles_list.remove(obstacle)
+
             if game.player.dino_rect.colliderect(obstacle.rect):
                 if game.player.shield:
                     self.obstacles_list.remove(obstacle)
                 elif game.life_manager.life_counter() == 1:
+                    game.life_manager.delete_life()
                     game.playing = False
                     game.death_count += 1
                     break
@@ -34,4 +38,4 @@ class ObstaclesManager:
             obstacle.draw(screen)
 
     def reset_obstacles(self):
-        self.obstacles_list =[]
+        self.obstacles_list = []

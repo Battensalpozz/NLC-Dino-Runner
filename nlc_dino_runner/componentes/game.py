@@ -31,16 +31,17 @@ class Game:
         self.life_manager = LifeManager()
 
     def run(self):
-        self.obstacle_manager.reset_obstacles()
-        self.power_up_manager.reset_power_ups(self.points)
         self.points = 0
+        self.obstacle_manager.reset_obstacles()
+        self.power_up_manager.reset_power_ups(self.points, self.player)
         self.playing = True
         self.life_manager.refull_lives()
+
+
         while self.playing:
             self.event()
             self.update()
             self.draw()
-
 
     def event(self):
         for event in pygame.event.get():
