@@ -1,6 +1,6 @@
 import pygame
 import os
-
+from pygame import mixer
 # Global Constants
 
 
@@ -23,8 +23,8 @@ RUNNING_SHIELD = [
 ]
 
 RUNNING_HAMMER = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Hammer.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Hammer.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2Hammer1.png")),
 ]
 
 JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJump.png"))
@@ -38,12 +38,12 @@ DUCKING = [
 
 DUCKING_SHIELD = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Shield.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2Shield.png")),
 ]
 
 DUCKING_HAMMER = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Hammer.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2Hammer.png")),
 ]
 
 SMALL_CACTUS = [
@@ -68,6 +68,19 @@ HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
-HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
+pygame.mixer.init()
 
+SOUND_SHIELD = mixer.Sound("SoundEffects/Efecto de sonido Shield.mp3")
+SOUND_HAMMER = mixer.Sound("SoundEffects/Efecto de sonido Hammer.mp3")
+SOUND_COLLISION = mixer.Sound("SoundEffects/Efecto de sonido Collision.mp3")
+SOUND_HAMMER_COLLISION = mixer.Sound("SoundEffects/Efecto de sonido Hammer_Collision.mp3")
+SOUND_GAME_OVER = mixer.Sound("SoundEffects/Efecto de sonido Game_over.mp3")
+
+HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
+DINO_DEAD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDead.png"))
+GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, "Other/GameOver.png"))
+DARK_MODE =(0, 0, 0)
+NORMAL_MODE =(255, 255, 255)
 DEFAULT_TYPE = "default"
+SHIELD_TYPE = "shield"
+HAMMER_TYPE = "hammer"
