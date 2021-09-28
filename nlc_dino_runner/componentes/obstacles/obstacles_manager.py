@@ -1,8 +1,10 @@
 import pygame
 
+from nlc_dino_runner.componentes.obstacles.bird import Bird
 from nlc_dino_runner.componentes.obstacles.cactus import Cactus
+from nlc_dino_runner.componentes.obstacles.obstacles import Obstacles
 from nlc_dino_runner.utils.constants import SMALL_CACTUS, LARGE_CACTUS, DINO_DEAD, SOUND_COLLISION, \
-    SOUND_HAMMER_COLLISION
+    SOUND_HAMMER_COLLISION, BIRD
 
 import random
 
@@ -12,12 +14,18 @@ class ObstaclesManager:
         self.obstacles_list = []
 
     def update(self, game):
-        size_cactus = random.randint(1, 2)
+        type_obstacles = random.choice(["Cactus", "Bird"])
+        size_cactus = random.choice([SMALL_CACTUS, LARGE_CACTUS])
+        print("obstaculos", type_obstacles)
         if len(self.obstacles_list) == 0:
-            if size_cactus == 1:
-                self.obstacles_list.append(Cactus(SMALL_CACTUS))
-            elif size_cactus == 2:
-                self.obstacles_list.append(Cactus(LARGE_CACTUS))
+
+            if type_obstacles == "Cactus":
+                self.obstacles_list.append(Cactus(size_cactus))
+
+            elif type_obstacles == "Bird":
+                self.obstacles_list.append(Bird(BIRD))
+
+
 
         for obstacle in self.obstacles_list:
             obstacle.update(game.game_speed, self.obstacles_list)

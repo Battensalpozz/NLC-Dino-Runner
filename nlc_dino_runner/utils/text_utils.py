@@ -15,7 +15,7 @@ def get_score_element(points, dark):
     text_rect = text.get_rect()
     text_rect.center = (1020, 30)
 
-    return (text, text_rect)
+    return (text,text_rect)
 
 def get_centered_masage(masage, width=SCREEN_WIDTH // 2, height=SCREEN_HEIGHT // 2, size=30, dark=False):
 
